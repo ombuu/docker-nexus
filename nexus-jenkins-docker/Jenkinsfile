@@ -1,4 +1,5 @@
-def mainDir="Part2_Docker/Chapter06/3-1_nexus-jenkins-docker"
+/*
+def mainDir="nexus-jenkins-docker"
 def region="ap-northeast-2"
 def nexusUrl="<Nexus VM의 프라이빗 IP DNS 이름>:5443"
 def repository="container-registry"
@@ -7,16 +8,32 @@ def tagName="1.0"
 def nexusid="<Nexus 접근 계정명>"
 def nexuspw="<Nexus 접근 비밀번호>"
 def jenkins_ip="<Jenkins VM의 프라이빗 IP DNS 이름>"
+*/
 
+def mainDir="nexus-jenkins-docker"
+def region="ap-northeast-2"
+def nexusUrl="ip-172-31-1-189.ap-northeast-2.compute.internal:5443"
+def repository="container-registry"
+def deployHost="ip-172-31-2-100.ap-northeast-2.compute.internal"
+def tagName="1.0"
+def nexusid="test"
+def nexuspw="!test00"
+def jenkins_ip="ip-172-31-0-98.ap-northeast-2.compute.internal"
+
+
+// 파이프라인의 하위에 각 stage 별로 진행되는 내역들이 명시되어있다.  
 pipeline {
     agent any
 
     stages {
+        // github에 실습 예제가 있는 repository에서 코드를 checkout해서 pull 가져오기를 하는 부분 구현
         stage('Pull Codes from Github'){
             steps{
                 checkout scm
             }
         }
+
+        //코드를 가져오면
         stage('Build Codes by Gradle') {
             steps {
                 sh """

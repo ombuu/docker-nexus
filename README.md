@@ -1,5 +1,5 @@
 # docker-nexus
-docker 컨테이너 빌드 및 push 실습
+fastcampus docker 컨테이너 빌드 및 push 실습
 
 ## Nexus와 AWS ECR의 Docker 빌드 및 Push 방법 차이점 비교
 1. Docker 컨테이너 빌드 후 Nexus에 이미지 Push 및 Clain 보안 스캔 수행
